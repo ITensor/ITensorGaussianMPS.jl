@@ -27,8 +27,8 @@ U = 1.0
 # Free fermion Hamiltonian
 os = OpSum()
 for n in 1:(N - 1)
-    os .+= -t, "Cdag", n, "C", n + 1
-    os .+= -t, "Cdag", n + 1, "C", n
+  os .+= -t, "Cdag", n, "C", n + 1
+  os .+= -t, "Cdag", n + 1, "C", n
 end
 
 # Hopping Hamiltonian with N spinless fermions
@@ -41,13 +41,13 @@ h = hopping_hamiltonian(os)
 s = siteinds("Fermion", N; conserve_qns=true)
 println("Making free fermion starting MPS")
 @time ψ0 = slater_determinant_to_mps(
-    s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
+  s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
 )
 @show maxlinkdim(ψ0)
 
 # Make an interacting Hamiltonian
 for n in 1:(N - 1)
-    os .+= U, "N", n, "N", n + 1
+  os .+= U, "N", n, "N", n + 1
 end
 H = MPO(os, s)
 

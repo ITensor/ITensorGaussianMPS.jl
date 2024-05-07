@@ -29,15 +29,15 @@ U = 1.0
 # Make the free fermion Hamiltonian for the up spins
 os_up = OpSum()
 for n in 1:(N - 1)
-    os_up .+= -t, "Cdagup", n, "Cup", n + 1
-    os_up .+= -t, "Cdagup", n + 1, "Cup", n
+  os_up .+= -t, "Cdagup", n, "Cup", n + 1
+  os_up .+= -t, "Cdagup", n + 1, "Cup", n
 end
 
 # Make the free fermion Hamiltonian for the down spins
 os_dn = OpSum()
 for n in 1:(N - 1)
-    os_dn .+= -t, "Cdagdn", n, "Cdn", n + 1
-    os_dn .+= -t, "Cdagdn", n + 1, "Cdn", n
+  os_dn .+= -t, "Cdagdn", n, "Cdn", n + 1
+  os_dn .+= -t, "Cdagdn", n + 1, "Cdn", n
 end
 
 # Hopping Hamiltonian with 2*N spinless fermions,
@@ -53,14 +53,14 @@ h = hopping_hamiltonian(os_up, os_dn)
 s = siteinds("Electron", N; conserve_qns=true, conserve_sz=false)
 println("Making free fermion starting MPS")
 @time ψ0 = slater_determinant_to_mps(
-    s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
+  s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
 )
 @show maxlinkdim(ψ0)
 
 @show U
 os = os_up + os_dn
 for n in 1:N
-    os .+= U, "Nupdn", n
+  os .+= U, "Nupdn", n
 end
 H = MPO(os, s)
 

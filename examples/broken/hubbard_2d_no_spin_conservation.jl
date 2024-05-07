@@ -33,15 +33,15 @@ lattice = square_lattice(Nx, Ny; yperiodic=true)
 # Make the free fermion Hamiltonian for the up spins
 os_up = OpSum()
 for b in lattice
-    os_up .+= -t, "Cdagup", b.s1, "Cup", b.s2
-    os_up .+= -t, "Cdagup", b.s2, "Cup", b.s1
+  os_up .+= -t, "Cdagup", b.s1, "Cup", b.s2
+  os_up .+= -t, "Cdagup", b.s2, "Cup", b.s1
 end
 
 # Make the free fermion Hamiltonian for the down spins
 os_dn = OpSum()
 for b in lattice
-    os_dn .+= -t, "Cdagdn", b.s1, "Cdn", b.s2
-    os_dn .+= -t, "Cdagdn", b.s2, "Cdn", b.s1
+  os_dn .+= -t, "Cdagdn", b.s1, "Cdn", b.s2
+  os_dn .+= -t, "Cdagdn", b.s2, "Cdn", b.s1
 end
 
 # Hopping Hamiltonian with 2*N spinless fermions,
@@ -60,13 +60,13 @@ println()
 s = siteinds("Electron", N; conserve_qns=true, conserve_sz=false)
 println("Making free fermion starting MPS")
 @time ψ0 = slater_determinant_to_mps(
-    s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
+  s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
 )
 @show maxlinkdim(ψ0)
 
 os = os_up + os_dn
 for n in 1:N
-    os .+= U, "Nupdn", n
+  os .+= U, "Nupdn", n
 end
 H = MPO(os, s)
 
@@ -83,10 +83,10 @@ println("\nFree fermion MPS starting state energy")
 
 println("\nStart from random product state")
 dmrg_kwargs = (;
-    nsweeps=10,
-    maxdim=[10, 20, 100, 200, _maxlinkdim],
-    cutoff=_cutoff,
-    noise=[1e-7, 1e-8, 1e-10, 0.0],
+  nsweeps=10,
+  maxdim=[10, 20, 100, 200, _maxlinkdim],
+  cutoff=_cutoff,
+  noise=[1e-7, 1e-8, 1e-10, 0.0],
 )
 @time dmrg(H, ψr; dmrg_kwargs...)
 
