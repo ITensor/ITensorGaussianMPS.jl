@@ -1,8 +1,9 @@
 # This script shows a minimal example of the GMPS-MPS conversion
 # of the ground state of quadratic fermionic Hamiltonian with pairing terms.
-using LinearAlgebra
-using ITensors
 using ITensorGaussianMPS
+using ITensorMPS
+using ITensors
+using LinearAlgebra
 
 ITensors.disable_contraction_sequence_optimization()
 let
