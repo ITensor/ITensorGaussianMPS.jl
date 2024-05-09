@@ -1,5 +1,6 @@
-using ITensors
 using ITensorGaussianMPS
+using ITensorMPS
+using ITensors
 using LinearAlgebra
 
 # Electrons
