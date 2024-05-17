@@ -82,7 +82,7 @@ end
 H = MPO(os, s)
 
 # Random starting state
-ψr = randomMPS(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
+ψr = random_mps(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
 
 println("\nRandom starting state energy")
 @show flux(ψr)

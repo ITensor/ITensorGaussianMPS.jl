@@ -61,7 +61,7 @@ println("\nFree fermion starting energy")
 @show inner(ψ0, H, ψ0)
 
 # Random starting state
-ψr = randomMPS(s, n -> n ≤ Nf ? "1" : "0")
+ψr = random_mps(s, n -> n ≤ Nf ? "1" : "0")
 
 println("\nRandom state starting energy")
 @show inner(ψr, H, ψr)

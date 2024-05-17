@@ -87,7 +87,7 @@ H = MPO(os_interacting, s)
 #@show norm(prod(H) - prod(H_noninteracting))
 
 # Random starting state
-ψr = randomMPS(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
+ψr = random_mps(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
 
 println("Random starting state energy")
 @show flux(ψr)
