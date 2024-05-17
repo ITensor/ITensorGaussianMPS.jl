@@ -106,7 +106,7 @@ end
   H = MPO(os_interacting, s)
 
   # Random starting state
-  ψr = randomMPS(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
+  ψr = random_mps(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
 
   @test flux(ψr) == QN(("Nf", Nf, -1), ("Sz", 0))
   @test flux(ψ0) == QN(("Nf", Nf, -1), ("Sz", 0))
@@ -255,7 +255,7 @@ end
     H = MPO(os_interacting, s)
 
     # Random starting state
-    ψr = randomMPS(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
+    ψr = random_mps(s, n -> n ≤ Nf ? (isodd(n) ? "↑" : "↓") : "0")
     @show flux(ψr), flux(ψ0)
     #@test flux(ψr) == QN(("Nf", Nf, -1), ("Sz", 0))
     #@test flux(ψ0) == QN(("Nf", Nf, -1), ("Sz", 0))
