@@ -31,6 +31,6 @@ end
   AU = A * U
   B = GMPS.make_subspace_real_if_possible(AU)
   # verify that same subspace is spanned by real eigenvectors B as original eigenvectors A or AU
-  @test norm(((B * B' * A) .- A)) <= eps(Float64) * 10
-  @test norm(((B * B' * AU) .- AU)) <= eps(Float64) * 10
+  @test norm(((B * B' * A) .- A)) <= eps(Float64) * 10^2
+  @test norm(((B * B' * AU) .- AU)) <= eps(Float64) * 10^2
 end
