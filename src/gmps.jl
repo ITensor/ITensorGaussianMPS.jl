@@ -1,6 +1,7 @@
 import Base: sortperm, size, length, eltype, conj, transpose, copy, *
-using ITensors: alias
-using ITensorMPS: ITensorMPS
+using ITensors: ITensors, ITensor, alias
+using ITensorMPS: ITensorMPS, @OpName_str, MPS, Op, OpName, OpSum, coefficient
+
 abstract type AbstractSymmetry end
 struct ConservesNfParity{T} <: AbstractSymmetry
   data::T
@@ -710,8 +711,8 @@ end
 
 Return an MPS with site indices `sites` by applying the circuit `U` to the starting state `state`.
 """
-function ITensors.MPS(sites::Vector{<:Index}, state, U::Vector{<:ITensor}; kwargs...)
-  return apply(U, productMPS(sites, state); kwargs...)
+function ITensorMPS.MPS(sites::Vector{<:Index}, state, U::Vector{<:ITensor}; kwargs...)
+  return apply(U, MPS(sites, state); kwargs...)
 end
 
 function isspinful(s::Index)
