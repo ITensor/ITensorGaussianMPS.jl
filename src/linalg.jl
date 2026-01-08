@@ -123,7 +123,7 @@ function make_real_if_possible(U0::AbstractMatrix, spectrum::Vector; sigdigits=1
   n = div(length(spectrum), 2)
   # Round spectrum for comparison within finite floating point precision.
   # Not the cleanest way to compare floating point numbers for approximate equality but should be sufficient here.
-  rounded_halfspectrum = round.(spectrum[1:n], sigdigits=sigdigits)
+  rounded_halfspectrum = round.(spectrum[1:n]; sigdigits=sigdigits)
   approx_unique_eigvals = unique(rounded_halfspectrum)
   # loop over degenerate subspaces
   for e in approx_unique_eigvals
