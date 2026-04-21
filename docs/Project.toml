@@ -1,2 +1,12 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+ITensorFormatter = "b6bf39f1-c9d3-4bad-aad8-593d802f65fd"
+ITensorGaussianMPS = "2be41995-7c9f-4653-b682-bfa4e7cebb93"
+
+[sources.ITensorGaussianMPS]
+path = ".."
+
+[compat]
+Documenter = "1"
+ITensorFormatter = "0.2.27"
+ITensorGaussianMPS = "0.1"

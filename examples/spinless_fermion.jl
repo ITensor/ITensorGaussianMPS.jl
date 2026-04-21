@@ -15,7 +15,7 @@ _maxlinkdim = 100
 @show _maxlinkdim
 
 # DMRG cutoff
-_cutoff = 1e-12
+_cutoff = 1.0e-12
 
 # Hopping
 t = 1.0
@@ -28,8 +28,8 @@ U = 1.0
 # Free fermion Hamiltonian
 os = OpSum()
 for n in 1:(N - 1)
-  os .+= -t, "Cdag", n, "C", n + 1
-  os .+= -t, "Cdag", n + 1, "C", n
+    os .+= -t, "Cdag", n, "C", n + 1
+    os .+= -t, "Cdag", n + 1, "C", n
 end
 
 # Hopping Hamiltonian with N spinless fermions
@@ -39,16 +39,16 @@ h = hopping_hamiltonian(os)
 Φ = slater_determinant_matrix(h, Nf)
 
 # Create an mps for the free fermion ground state
-s = siteinds("Fermion", N; conserve_qns=true)
+s = siteinds("Fermion", N; conserve_qns = true)
 println("Making free fermion starting MPS")
 @time ψ0 = slater_determinant_to_mps(
-  s, Φ; eigval_cutoff=1e-4, cutoff=_cutoff, maxdim=_maxlinkdim
+    s, Φ; eigval_cutoff = 1.0e-4, cutoff = _cutoff, maxdim = _maxlinkdim
 )
 @show maxlinkdim(ψ0)
 
 # Make an interacting Hamiltonian
 for n in 1:(N - 1)
-  os .+= U, "N", n, "N", n + 1
+    os .+= U, "N", n, "N", n + 1
 end
 H = MPO(os, s)
 
@@ -64,9 +64,9 @@ println("\nFree fermion starting energy")
 @show inner(ψ0', H, ψ0)
 
 println("\nRun dmrg with random starting state")
-@time dmrg(H, ψr; nsweeps=20, maxdim=[10, 20, 40, _maxlinkdim], cutoff=_cutoff)
+@time dmrg(H, ψr; nsweeps = 20, maxdim = [10, 20, 40, _maxlinkdim], cutoff = _cutoff)
 
 println("\nRun dmrg with free fermion starting state")
-@time dmrg(H, ψ0; nsweeps=4, maxdim=_maxlinkdim, cutoff=_cutoff)
+@time dmrg(H, ψ0; nsweeps = 4, maxdim = _maxlinkdim, cutoff = _cutoff)
 
 nothing
