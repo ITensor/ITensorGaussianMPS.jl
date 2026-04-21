@@ -1,8 +1,12 @@
 [deps]
 ITensorGaussianMPS = "2be41995-7c9f-4653-b682-bfa4e7cebb93"
+ITensorMPS = "0d1a4710-d33b-49a5-8f18-73bdf49b47e2"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [sources.ITensorGaussianMPS]
 path = ".."
 
 [compat]
 ITensorGaussianMPS = "0.1"
+ITensorMPS = "0.3"
+LinearAlgebra = "1.10"
