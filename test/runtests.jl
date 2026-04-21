@@ -1,9 +1,3 @@
-using ITensorGaussianMPS
-using LinearAlgebra
-using Test
+using ITensorPkgSkeleton: ITensorPkgSkeleton
 
-@testset "ITensorGaussianMPS.jl" begin
-  include("gmps.jl")
-  include("electron.jl")
-  include("linalg.jl")
-end
+ITensorPkgSkeleton.runtests(; testdir = @__DIR__)
