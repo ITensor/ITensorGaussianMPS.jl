@@ -1,6 +1,6 @@
 name = "ITensorGaussianMPS"
 uuid = "2be41995-7c9f-4653-b682-bfa4e7cebb93"
-version = "0.1.14"
+version = "0.1.15"
 authors = ["Matthew Fishman <mfishman@flatironinstitute.org> and contributors"]
 
 [workspace]
