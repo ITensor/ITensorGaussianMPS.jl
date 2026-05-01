@@ -13,7 +13,7 @@ path = ".."
 [compat]
 Aqua = "0.8.9"
 ITensorGaussianMPS = "0.1"
-ITensorMPS = "0.3"
+ITensorMPS = "0.3, 0.4"
 ITensorPkgSkeleton = "0.3.42"
 ITensors = "0.7, 0.8, 0.9"
 LinearAlgebra = "1.10"
