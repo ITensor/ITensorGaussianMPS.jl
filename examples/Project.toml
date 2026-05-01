@@ -8,5 +8,5 @@ path = ".."
 
 [compat]
 ITensorGaussianMPS = "0.1"
-ITensorMPS = "0.3"
+ITensorMPS = "0.3, 0.4"
 LinearAlgebra = "1.10"
